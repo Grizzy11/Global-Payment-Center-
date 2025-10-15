@@ -1,0 +1,349 @@
+<!-- Save as index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PayVerse — All-in-One Payment Hub</title>
+  <meta name="description" content="PayVerse — Accept 50+ payment methods instantly, securely, and globally. Cards, wallets, mobile money, crypto & more." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f3f3f3;
+      --card:#fff;
+      --muted:#6b7280;
+      --accent1:#00c853;
+      --accent2:#00e676;
+      --glass: rgba(255,255,255,0.6);
+      --radius:14px;
+      --shadow: 0 12px 30px rgba(2,6,23,0.08);
+      --max-width:1100px;
+      --section-gap:48px;
+    }
+
+    /* Reset + base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      -webkit-text-size-adjust:100%;
+    }
+
+    /* Container */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:28px;display:flex;flex-direction:column;gap:var(--section-gap)}
+
+    /* NAV */
+    header{display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .logo {
+      width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(0,200,100,0.14)
+    }
+    .brand h1{font-size:18px;margin:0;letter-spacing:0.2px}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px;border-radius:10px}
+    nav a.cta{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;padding:10px 16px}
+    nav a:hover{opacity:.9}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 440px;gap:32px;align-items:center;padding:18px 10px}
+    .eyebrow{display:inline-block;background:#e8fff0;color:#006a2e;padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    .headline{font-size:34px;line-height:1.05;margin:12px 0 12px;font-weight:700}
+    .sub{color:var(--muted);max-width:62ch;font-size:15px}
+    .hero-ctas{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;color:white;padding:14px 20px;border-radius:12px;font-weight:700;cursor:pointer}
+    .btn-ghost{background:transparent;border:1px solid #e6eef0;padding:12px 16px;border-radius:10px;color:var(--muted);cursor:pointer}
+    .stat-grid{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+    .stat{background:linear-gradient(180deg,rgba(0,200,100,0.06),transparent);padding:12px 14px;border-radius:10px;font-weight:700;color:#0b3a22}
+
+    /* Hero card on right */
+    .hero-card{background:var(--card);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+    .card-top{display:flex;align-items:center;justify-content:space-between}
+    .balance{font-size:18px;font-weight:700}
+    .small-muted{font-size:13px;color:var(--muted)}
+
+    .methods-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
+    .method-pill{background:#fafafa;padding:8px 10px;border-radius:999px;font-weight:600;font-size:13px;color:#333;border:1px solid #f0f0f0}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .feature{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+    .feature .icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(180deg,var(--accent1),var(--accent2));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    .feature h3{margin:0;font-size:16px}
+    .feature p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+    /* Payments carousel */
+    .payments{background:transparent;padding:8px;border-radius:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .pay-logo{width:72px;height:36px;display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;border:1px solid #eee;padding:6px;box-shadow:0 6px 14px rgba(2,6,23,0.04)}
+    .pay-logo img{max-width:100%;max-height:22px;opacity:.95}
+
+    /* Security + Trust */
+    .trust{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .trust p{margin:0;color:var(--muted)}
+    .badge{display:flex;gap:8px;align-items:center;background:#fff;padding:8px 12px;border-radius:10px;border:1px solid #eef2ef;box-shadow:0 8px 20px rgba(2,6,23,0.04)}
+    .badge svg{width:20px;height:20px;color:#0b3a22}
+
+    /* Footer */
+    footer{display:flex;justify-content:space-between;align-items:center;padding:18px 10px;border-top:1px solid #eef2f0;color:var(--muted);flex-wrap:wrap;gap:12px}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:650px){
+      .wrap{padding:18px}
+      .features{grid-template-columns:1fr}
+      header{gap:10px}
+      nav{display:none}
+      .headline{font-size:26px}
+      .logo{width:44px;height:44px}
+      .hero-card{order: -1} /* show card on top on small screens */
+    }
+
+    /* Dark mode tweaks */
+    @media (prefers-color-scheme:dark){
+      :root{--bg:#0f1115;--card:#121217;--muted:#b8bfca;--glass:rgba(255,255,255,0.03)}
+      body{color:#e8eef6}
+      header nav a{color:var(--muted)}
+      .pay-logo{background:#131317;border:1px solid #222}
+      footer{border-top-color:#1b1b1d}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- NAV -->
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">PV</div>
+        <div>
+          <h1 style="margin:0">PayVerse</h1>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Global payment hub</div>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#methods">Methods</a>
+        <a href="#security">Security</a>
+        <a class="cta" href="dashboard.html">Get Started</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div>
+        <span class="eyebrow">50+ payment methods</span>
+        <h2 id="hero-heading" class="headline">Your all-in-one payment hub — accept payments instantly, securely, globally.</h2>
+        <p class="sub">PayVerse connects cards, wallets, mobile money, bank transfers and crypto in one unified API and dashboard — local payout support, instant settlement options, and enterprise-grade security.</p>
+
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="location.href='dashboard.html'">Try the Demo — Free</button>
+          <button class="btn-ghost" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Learn More</button>
+        </div>
+
+        <div class="stat-grid" aria-hidden="true">
+          <div class="stat">99.9% uptime</div>
+          <div class="stat">Global coverage</div>
+          <div class="stat">PCI Level 1</div>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Quick preview">
+        <div class="card-top">
+          <div>
+            <div class="small-muted">Live balance</div>
+            <div class="balance">$24,823.42</div>
+          </div>
+          <div style="text-align:right">
+            <div class="small-muted">Account</div>
+            <div style="font-weight:700">Business • Pro</div>
+          </div>
+        </div>
+
+        <div style="margin-top:6px">
+          <div class="small-muted">Recent accepts</div>
+          <div class="methods-row" aria-hidden="true">
+            <div class="method-pill">Visa</div>
+            <div class="method-pill">Mastercard</div>
+            <div class="method-pill">PayPal</div>
+            <div class="method-pill">M-Pesa</div>
+            <div class="method-pill">Pix</div>
+            <div class="method-pill">Bitcoin</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button class="btn-primary" style="flex:1" onclick="location.href='send.html'">Send Money</button>
+          <button class="btn-ghost" style="flex:1" onclick="location.href='receive.html'">Receive</button>
+        </div>
+
+        <div style="margin-top:12px;font-size:13px;color:var(--muted)">Connect via dashboard, API keys, or hosted checkout.</div>
+      </aside>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <h2 style="margin:0 0 12px">Built for scale & speed</h2>
+      <p class="sub" style="margin:0 0 18px">Everything you need to accept payments globally — pre-built integrations, smart routing, and reconciliation tools.</p>
+
+      <div class="features" role="list">
+        <div class="feature" role="listitem">
+          <div class="icon">⚡</div>
+          <div>
+            <h3>Instant settlements</h3>
+            <p>Smart routing and instant settlement options where available — keep cashflow moving.</p>
+          </div>
+        </div>
+
+        <div class="feature" role="listitem">
+          <div class="icon">🔁</div>
+          <div>
+            <h3>50+ payment methods</h3>
+            <p>Cards, wallets, mobile money, bank transfers and major cryptocurrencies — single integration.</p>
+          </div>
+        </div>
+
+        <div class="feature" role="listitem">
+          <div class="icon">🔐</div>
+          <div>
+            <h3>Enterprise security</h3>
+            <p>PCI Level 1, strong encryption, and fraud tools to keep funds and customers safe.</p>
+          </div>
+        </div>
+
+        <div class="feature" role="listitem">
+          <div class="icon">🧾</div>
+          <div>
+            <h3>Reconciliation & reporting</h3>
+            <p>Automatic reporting, downloadable exports and webhooks for accounting systems.</p>
+          </div>
+        </div>
+
+        <div class="feature" role="listitem">
+          <div class="icon">🛠️</div>
+          <div>
+            <h3>Developer-friendly API</h3>
+            <p>Clean docs, SDKs and sandbox keys so you can go live fast.</p>
+          </div>
+        </div>
+
+        <div class="feature" role="listitem">
+          <div class="icon">🌍</div>
+          <div>
+            <h3>Global & local payouts</h3>
+            <p>Local currencies and payout rails for dozens of markets to minimize FX friction.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT METHODS SHOWCASE -->
+    <section id="methods">
+      <h2 style="margin:0 0 12px">Supported payment methods</h2>
+      <p class="sub" style="margin:0 0 16px">A sample of popular payment methods PayVerse supports out of the box.</p>
+
+      <div class="payments" aria-hidden="true">
+        <!-- logos sourced from commons or trusted CDNs; replace with your assets as needed -->
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" alt="Mastercard"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/8/88/PayPal_Logo.png" alt="PayPal"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Apple_Pay_logo.png" alt="Apple Pay"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bitcoin_logo.svg" alt="Bitcoin"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Google_Pay_Logo.svg" alt="Google Pay"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/M-Pesa_logo.png" alt="M-Pesa" onerror="this.style.opacity=.5"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Pix_Logo.png" alt="Pix" onerror="this.style.opacity=.6"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Alipay_logo.svg" alt="Alipay" onerror="this.style.opacity=.6"></div>
+        <div class="pay-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/90/WeChat_Pay_logo.png" alt="WeChat Pay" onerror="this.style.opacity=.6"></div>
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section id="security">
+      <h2 style="margin:0 0 12px">Security & Compliance</h2>
+      <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+        <div class="trust">
+          <div class="badge" title="PCI DSS Level 1">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 2L2 7v5c0 5 5 9 10 10s10-4 10-10V7L12 2z" fill="#00c853" opacity=".12"></path>
+              <path d="M9 12l2 2 4-4" stroke="#00c853" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div style="font-weight:700">PCI DSS Level 1</div>
+          </div>
+
+          <div class="badge" style="margin-left:8px" title="Encryption">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="10" rx="2" stroke="#0b3a22" stroke-width="1.2"></rect>
+              <path d="M7 11V8a5 5 0 0 1 10 0v3" stroke="#0b3a22" stroke-width="1.2" stroke-linecap="round"></path>
+            </svg>
+            <div style="font-weight:700">Strong encryption</div>
+          </div>
+        </div>
+
+        <p style="max-width:60ch;color:var(--muted);margin:0">We maintain strict compliance controls, regular audits, and advanced fraud prevention tools including machine learning-based scoring and device fingerprinting.</p>
+      </div>
+    </section>
+
+    <!-- CTA FOOTER -->
+    <section style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>
+        <div style="font-weight:700;font-size:18px">Ready to accept payments worldwide?</div>
+        <div style="color:var(--muted);margin-top:6px">Start with the demo or integrate in minutes with our API.</div>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn-primary" onclick="location.href='dashboard.html'">Get Started — Free</button>
+        <button class="btn-ghost" onclick="location.href='send.html'">Try Send</button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="font-weight:700">PayVerse</div>
+        <div style="font-size:13px;color:var(--muted)">© <span id="year"></span> PayVerse • Built for global businesses</div>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <a href="privacy.html" style="color:var(--muted);text-decoration:none">Privacy</a>
+        <a href="terms.html" style="color:var(--muted);text-decoration:none">Terms</a>
+        <a href="dashboard.html" class="cta" style="padding:8px 12px">Sign in</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Small accessibility: keyboard focus on CTAs
+    document.querySelectorAll('.btn-primary, .btn-ghost, nav a.cta').forEach(el=>{
+      el.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') el.click(); });
+    });
+
+    // Lightweight marquee-style auto-scroll for logos on wider screens
+    (function autoScrollLogos(){
+      const container = document.querySelector('.payments');
+      if(!container || window.matchMedia('(max-width:900px)').matches) return;
+      let pos = 0;
+      setInterval(()=>{
+        pos = (pos + 1) % (container.scrollWidth - container.clientWidth + 1);
+        container.scrollTo({left: pos, behavior:'smooth'});
+      }, 2200);
+    })();
+
+    // If user is on dashboard demo pages, keep nav link as active (simple)
+    if(location.pathname.endsWith('dashboard.html')){
+      const a = document.querySelector('nav a.cta');
+      if(a) a.textContent = 'Dashboard';
+    }
+  </script>
+</body>
+</html>
